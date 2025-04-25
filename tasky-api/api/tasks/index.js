@@ -28,7 +28,9 @@ router.post('/', (req, res) => {
         description,
         deadline,
         priority,
-        done
+        done,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
     };
     tasksData.tasks.push(newTask);
     res.status(201).json(newTask);
@@ -44,6 +46,7 @@ router.put('/:id', (req, res) => {
     }
     const updatedTask = { ...tasksData.tasks[taskIndex], ...req.body, id:id };
     tasksData.tasks[taskIndex] = updatedTask;
+    tasksData.tasks[taskIndex].updated_at = new Date().toISOString();
     res.json(updatedTask);
 });
 
