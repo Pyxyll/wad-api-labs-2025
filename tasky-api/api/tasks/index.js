@@ -23,7 +23,7 @@ router.put('/:id', async (req, res) => {
         _id: req.params.id,
     }, req.body);
     if (result.matchedCount) {
-        res.status(200).json({ code: 200, msg: 'Task Updated Successfully' });
+        res.status(200).json({ code:200, msg: 'Task Updated Successfully' });
     } else {
         res.status(404).json({ code: 404, msg: 'Unable to find Task' });
     }
@@ -31,7 +31,7 @@ router.put('/:id', async (req, res) => {
 
 // delete Task
 router.delete('/:id', async (req, res) => {
-    if (req.body._id) delete req.body._id;
+    // if (req.body._id) delete req.body._id;
     const result = await Task.deleteOne({
         _id: req.params.id,
     });

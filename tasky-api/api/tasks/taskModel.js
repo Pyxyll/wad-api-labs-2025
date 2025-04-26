@@ -7,15 +7,15 @@ const TaskSchema = new Schema({
     description: String,
     deadline: Date,
     done: Boolean,
-    priority: { type: String, enum: ["Low", "Medium", "High"], required: true },
+    priority: { type: String, enum: ["Low"||"low", "Medium"||"medium", "High"||"high"], required: true },
     created_at: Date,
     updated_at: Date
 });
 
 const dateValidator = (date) => {
     return date > new Date();
-};
-TaskSchema.path("deadline").validate(dateValidator);
+  }
+  TaskSchema.path("deadline").validate(dateValidator);
 
 
 export default mongoose.model('Task', TaskSchema);
